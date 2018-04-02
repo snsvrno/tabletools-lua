@@ -129,4 +129,15 @@ function TABLETOOLS.mergeTables(...)
   return newTable
 end
 
+function TABLETOOLS.clone(t1)
+  local newTable = { }
+  for i,v in pairs(t1) do
+    if type(v) == "table" then newTable[i] = TABLETOOLS.clone(v)
+    else
+      newTable[i] = v
+    end 
+  end
+  return newTable
+end
+
 return TABLETOOLS

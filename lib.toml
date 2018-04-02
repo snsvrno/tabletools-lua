@@ -1,11 +1,10 @@
 name = "tabletools"
 user = "snsvrno"
 author = "snsvrno <snsvrno@tuta.io>"
-version = "1.0.0"
+version = "1.1.0"
 
 [requires]
 _ = "src.tools"
 
 [dependencies]
 st = { name = "stringtools", version = "1.*.*" }
-

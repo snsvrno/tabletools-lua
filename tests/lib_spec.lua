@@ -58,4 +58,20 @@ describe("Tabletools",function()
       assert.are.equal(t1.z[4],12)
     end)
   end)
+
+  describe("cloning a table",function() 
+    local t1 = { x = { y = "z" } }
+    local t2 = T.clone(t1)
+
+    it("Testing if the clone is the same",function() 
+      assert.are.equal(t1.x.y,t2.x.y)
+    end)
+
+    it ("Testing that tables are different objects", function() 
+      t2.x.y = "a"
+      assert.are.equal(t1.x.y == t2.x.y, false)
+    end)
+
+  end)
+
 end)
