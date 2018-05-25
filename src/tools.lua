@@ -48,7 +48,7 @@ function TABLETOOLS.toString(t)
   local printable_string = '{ '
   for i,v in pairs(t) do
     if type(v) == type({}) then printable_string = printable_string .. i .. ' = ' .. TABLETOOLS.toString(v) .. ', '
-    else printable_string = printable_string .. i .. ' = ' .. v .. ', ' end
+    else printable_string = printable_string .. i .. ' = ' .. tostring(v) .. ', ' end
   end
 
   printable_string = printable_string:sub(1,#printable_string-2) .. ' }'
@@ -138,6 +138,15 @@ function TABLETOOLS.clone(t1)
     end 
   end
   return newTable
+end
+
+--- PUT INSIDE OF TABLETOOLS
+function TABLETOOLS.reverseArray(array)
+  local newArray = { }
+  for i=#array,1,-1 do
+    newArray[#newArray+1] = array[i]
+  end
+  return newArray
 end
 
 return TABLETOOLS

@@ -74,4 +74,17 @@ describe("Tabletools",function()
 
   end)
 
+  describe("reversing an array",function()
+    local a1 = { 1,2,3,4,5 }
+    local a1r = T.reverseArray(a1)
+
+    it("Testing it actually reverses it", function()
+      assert.are.equal(a1[1],a1r[5])
+      assert.are.equal(a1[2],a1r[4])
+      assert.are.equal(a1[3],a1r[3])
+      assert.are.equal(a1[4],a1r[2])
+      assert.are.equal(a1[5],a1r[1])
+    end)
+  end)
+
 end)
