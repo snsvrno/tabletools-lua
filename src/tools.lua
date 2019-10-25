@@ -11,7 +11,7 @@ function TABLETOOLS.insertByDotIndex(t,i,v)
   -- return : nil         does not return anything
   -----------------------------------------------------
 
-  local indexTree = @st.split(i,'.')
+  local indexTree = TABLETOOLS._stringtools.split(i,'.')
 
   local ci = indexTree[1]   -- current index
   -- the rest of the index
