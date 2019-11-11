@@ -1,1 +1,4 @@
-bin
+# test stuff, resuts and reports
+# luacov
+luacov.report.out
+luacov.stats.out

@@ -3,11 +3,11 @@ local tools = require((...):gsub('%.init$', '') .. '.src.tools')
 
 -- library information
 tools._name = "tabletools"
-tools._version = "1.1.0"
+tools._version = "1.2.0"
 tools._author = "snsvrno <snsvrno@tuta.io>"
 
 
--- will try and load the required dependencies, will error and 
+-- will try and load the required dependencies, will error and
 -- let the user know that something is wrong if it can't find them
 -- (will be nicer than the standard lua failure one)
 local dependencies = {
@@ -15,8 +15,8 @@ local dependencies = {
 }
 
 -- needs to findout what the pre-path stuff you used when calling this library, so
--- it knows what to put in front of the dependencies, so if you call `a.b.c.library` it 
--- needs to extract the `a.b.c.` part so it can put it infront of the dependencies to 
+-- it knows what to put in front of the dependencies, so if you call `a.b.c.library` it
+-- needs to extract the `a.b.c.` part so it can put it infront of the dependencies to
 -- get all dependencies
 
 local prepath; do
@@ -53,16 +53,18 @@ for _, dep in pairs(dependencies) do
 		if status then results[#results + 1] = module end
 	end
 	-- lets check the results
-	if #results == 1 then 
+	if #results == 1 then
 		-- we found something, lets verify that its actually the right library
 		if not results[1]._name == name or not results[1]._author == tools._author then
-			assert(false, "\nerror loading the library '" .. name .. "'. found something but it doesn't appear to be the right library")
+			assert(false,
+                "\nerror loading the library '" .. name ..
+                "'. found something but it doesn't appear to be the right library")
 		end
 		-- we are ok, lets load it.
-		tools["_" .. name] = results[1] 
+		tools["_" .. name] = results[1]
 	else
-		assert(false,"\ncan't find the library '" .. name .. 
-			"', are you sure its downloaded?\nput it in the same folder / path as you did this one (" .. 
+		assert(false,"\ncan't find the library '" .. name ..
+			"', are you sure its downloaded?\nput it in the same folder / path as you did this one (" ..
 			tools._name .. ")\n\nif you need to download it, get it from the github\npage: '" .. url .. "'")
 	end
 end
