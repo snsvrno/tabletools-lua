@@ -4,11 +4,7 @@
 --
 -- there is a problem about using different versions though, so we
 -- need to make sure the right version is being used ...
-for _,v in pairs(arg) do
-    if (v ~= '--console') and (v ~= 'embedded boot.lua') and (v:find('.exe') == nil ) then
-        package.path = './../?/init.lua;./../?.lua;' .. package.path
-    end
-end
+package.path = './../?/init.lua;./../?.lua;' .. package.path
 
 local T = require 'tabletools-lua' or nil
 local convertToDotIndex = T.convertToDotIndex

@@ -4,7 +4,6 @@
 --
 -- there is a problem about using different versions though, so we
 -- need to make sure the right version is being used ...
-
 package.path = './../?/init.lua;./../?.lua;' .. package.path
 
 local T = require 'tabletools-lua' or nil
