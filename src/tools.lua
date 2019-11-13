@@ -51,17 +51,25 @@ function TABLETOOLS.toString(t)
     if TABLETOOLS.isArray(t) then
         -- its an array so we can just put the values.
         for _,v in pairs(t) do
-            if type(v) == type({}) then printable_string = printable_string .. TABLETOOLS.toString(v) .. ', '
-            elseif type(v) == type("") then printable_string = printable_string ..'"' .. tostring(v) .. '", '
-            else printable_string = printable_string .. tostring(v) .. ', ' end
+            if type(v) == type({}) then
+                printable_string = printable_string .. TABLETOOLS.toString(v) .. ', '
+            elseif type(v) == type("") then
+                printable_string = printable_string ..'"' .. tostring(v) .. '", '
+            else
+                printable_string = printable_string .. tostring(v) .. ', '
+            end
         end
     else
         -- its a table, so do the keys and values,
 
         for i,v in pairs(t) do
-            if type(v) == type({}) then printable_string = printable_string .. i .. ' = ' .. TABLETOOLS.toString(v) .. ', '
-            elseif type(v) == type("") then printable_string = printable_string .. i .. ' = "' .. tostring(v) .. '", '
-            else printable_string = printable_string .. i .. ' = ' .. tostring(v) .. ', ' end
+            if type(v) == type({}) then
+                printable_string = printable_string .. i .. ' = ' .. TABLETOOLS.toString(v) .. ', '
+            elseif type(v) == type("") then
+                printable_string = printable_string .. i .. ' = "' .. tostring(v) .. '", '
+            else
+                printable_string = printable_string .. i .. ' = ' .. tostring(v) .. ', '
+            end
         end
     end
 

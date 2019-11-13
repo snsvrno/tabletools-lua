@@ -7,7 +7,7 @@
 for _,v in pairs(arg) do
     if (v ~= '--console') and (v ~= 'embedded boot.lua') and (v:find('.exe') == nil ) then
         package.path = './../?/init.lua;./../?.lua;' .. package.path
-    end 
+    end
 end
 
 local T = require 'tabletools-lua' or nil
