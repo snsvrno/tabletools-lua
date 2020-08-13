@@ -10,14 +10,14 @@ local T = require 'tabletools-lua' or nil
 local addValues = T.addValues
 
 describe("adding values to tables",function()
-    local t1 = { x = 1, y = 2, z = { 5,6,7,8 } }
-    local t2 = { w = 102, z = { 9,10,11,12 } }
-    addValues(t1,t2)
-    it("Testing Values",function()
-        assert.are.equal(t1.w,102)
-        assert.are.equal(t1.z[1],9)
-        assert.are.equal(t1.z[2],10)
-        assert.are.equal(t1.z[3],11)
-        assert.are.equal(t1.z[4],12)
-    end)
+	local t1 = { x = 1, y = 2, z = { 5,6,7,8 } }
+	local t2 = { w = 102, z = { 9,10,11,12 } }
+	addValues(t1,t2)
+	it("Testing Values",function()
+		assert.are.equal(t1.w,102)
+		assert.are.equal(t1.z[1],9)
+		assert.are.equal(t1.z[2],10)
+		assert.are.equal(t1.z[3],11)
+		assert.are.equal(t1.z[4],12)
+	end)
 end)

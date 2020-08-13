@@ -20,28 +20,28 @@ local dependencies = {
 -- get all dependencies
 
 local prepath; do
-    -- the string the user used to `require` this library
-    local selfRequirePath = (...):gsub('%.init$', '')
-    -- a function to split a string by a "."
-    local splitter = function (inputstr)
-        -- https://stackoverflow.com/questions/1426954/split-string-in-lua
-        local t = {}; for str in string.gmatch(inputstr, "([^".. "." .."]+)") do table.insert(t, str) end
-        return t
-    end
+	-- the string the user used to `require` this library
+	local selfRequirePath = (...):gsub('%.init$', '')
+	-- a function to split a string by a "."
+	local splitter = function (inputstr)
+		-- https://stackoverflow.com/questions/1426954/split-string-in-lua
+		local t = {}; for str in string.gmatch(inputstr, "([^".. "." .."]+)") do table.insert(t, str) end
+		return t
+	end
 
-    -- finds out what section of the path the library name is
-    local parts = splitter(selfRequirePath)
-    local piece = 0; for j = 1,#parts do
-        if string.find(parts[j],tools._name) then
-            piece = j - 1; break
-    end end
+	-- finds out what section of the path the library name is
+	local parts = splitter(selfRequirePath)
+	local piece = 0; for j = 1,#parts do
+		if string.find(parts[j],tools._name) then
+			piece = j - 1; break
+	end end
 
-    -- creates the prestring
-    assert(piece >= 0,"error processing the library require path")
-    local pre = ""; for i = 1,piece do
-        pre = pre .. parts[i] .. "."
-    end
-    prepath = pre
+	-- creates the prestring
+	assert(piece >= 0,"error processing the library require path")
+	local pre = ""; for i = 1,piece do
+		pre = pre .. parts[i] .. "."
+	end
+	prepath = pre
 end
 
 for _, dep in pairs(dependencies) do
@@ -57,8 +57,8 @@ for _, dep in pairs(dependencies) do
 		-- we found something, lets verify that its actually the right library
 		if not results[1]._name == name or not results[1]._author == tools._author then
 			assert(false,
-                "\nerror loading the library '" .. name ..
-                "'. found something but it doesn't appear to be the right library")
+				"\nerror loading the library '" .. name ..
+				"'. found something but it doesn't appear to be the right library")
 		end
 		-- we are ok, lets load it.
 		tools["_" .. name] = results[1]

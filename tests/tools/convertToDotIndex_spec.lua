@@ -10,12 +10,12 @@ local T = require 'tabletools-lua' or nil
 local convertToDotIndex = T.convertToDotIndex
 
 describe("convertToDotIndex()",function()
-    local testTable = { bob = '1', james = '2', linda = { age = 1, name = 'boop'} }
-    local dotTable = convertToDotIndex(testTable)
+	local testTable = { bob = '1', james = '2', linda = { age = 1, name = 'boop'} }
+	local dotTable = convertToDotIndex(testTable)
 
-    it("Testing Values",function()
-        assert.are.equal(testTable.bob,dotTable['bob'])
-        assert.are.equal(testTable.linda.age,dotTable['linda.age'])
-        assert.are.equal(testTable.linda.name,dotTable['linda.name'])
-    end)
+	it("Testing Values",function()
+		assert.are.equal(testTable.bob,dotTable['bob'])
+		assert.are.equal(testTable.linda.age,dotTable['linda.age'])
+		assert.are.equal(testTable.linda.name,dotTable['linda.name'])
+	end)
 end)
